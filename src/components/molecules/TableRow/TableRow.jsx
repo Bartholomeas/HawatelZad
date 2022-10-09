@@ -1,9 +1,6 @@
 import React from 'react';
 
-interface Props {
-	children: React.ReactNode;
-}
-const TableRow = ({ children }: Props) => {
+const TableRow = ({ children }) => {
 	return <tr className='w-full border-solid border-b-2 border-baseVeryLight'>{children}</tr>;
 };
 

@@ -1,9 +1,6 @@
 import React from 'react';
 
-interface Props {
-	children: React.ReactNode;
-}
-const TableBody = ({ children }: Props) => {
+const TableBody = ({ children }) => {
 	return <tbody className=''>{children}</tbody>;
 };
 

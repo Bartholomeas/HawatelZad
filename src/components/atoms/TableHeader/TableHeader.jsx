@@ -1,8 +1,6 @@
 import React from 'react';
-interface Props {
-	children: string;
-}
-const TableHeader = ({ children }: Props) => {
+
+const TableHeader = ({ children }) => {
 	return (
 		<th
 			className={`py-sm px-xs text-xs text-font

@@ -1,9 +1,6 @@
 import React from 'react';
 
-interface Props {
-	children: string | number | React.ReactNode;
-}
-const TableData = ({ children }: Props) => {
+const TableData = ({ children }) => {
 	return (
 		<td
 			className={` px-xs text-sm text-font h-[6rem]
