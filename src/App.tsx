@@ -1,13 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-
-import Navbar from './components/organisms/Navbar/Navbar';
+import { Route, Routes } from 'react-router-dom';
 import Users from './pages/Users';
-import AppLayout from './providers/AppLayout';
 
 const App = () => {
 	return (
-		<div>
+		<div className='w-full'>
 			<Routes>
 				<Route path='/' element={<Users />} />
 				<Route path='/posts' element={<Users />} />
