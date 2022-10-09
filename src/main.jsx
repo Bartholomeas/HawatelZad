@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import Navbar from './components/organisms/Navbar/Navbar';
+import './index.css';
+import AppLayout from './providers/AppLayout';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+	<React.StrictMode>
+		<AppLayout>
+			<App />
+		</AppLayout>
+	</React.StrictMode>
+);
