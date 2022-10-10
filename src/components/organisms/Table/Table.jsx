@@ -1,9 +1,6 @@
 import React from 'react';
 
-interface Props {
-	children: React.ReactNode;
-}
-const Table = ({ children }: Props) => {
+const Table = ({ children }) => {
 	return <table className=' max-w-[900px] w-full border-collapse'>{children}</table>;
 };
 

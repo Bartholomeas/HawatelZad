@@ -13,6 +13,8 @@ const initialState = {
 
 	commentsData: [],
 	commentsMeta: [],
+
+	modalOpen: false,
 };
 
 function appReducer(state, action) {
@@ -48,6 +50,9 @@ function appReducer(state, action) {
 		case ACTIONS.SET_COMMENTS_META:
 			if (!action.payload) return { commentsMeta: [] };
 			return { ...state, commentsMeta: action.payload };
+
+		case ACTIONS.TOGGLE_MODAL:
+			return { ...state, modalOpen: action.payload };
 
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);

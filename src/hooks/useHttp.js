@@ -12,8 +12,7 @@ const useHttp = () => {
 				dispatch({ type: `${actionType}_META`, payload: data.data.meta.pagination });
 
 			dispatch({ type: actionType, payload: data.data.data });
-
-			return data;
+			return;
 		} catch (err) {
 			console.log(err);
 			throw new Error('Something went wrong');

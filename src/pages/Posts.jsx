@@ -10,17 +10,23 @@ import ReducerContext from '../state/useContext';
 import { ACTIONS } from '../state/actions';
 import Pagination from '../components/organisms/Pagination/Pagination';
 import { convertDate } from '../utils/convertDate';
+import InfoModal from '../components/organisms/InfoModal/InfoModal';
 
 const Posts = () => {
 	const { getData } = useHttp();
-	const { state } = useContext(ReducerContext);
+	const { state, dispatch } = useContext(ReducerContext);
 
 	useEffect(() => {
 		{
 			state.postsData.length === 0 &&
 				getData('https://gorest.co.in/public/v1/posts', ACTIONS.SET_POSTS);
 		}
-	}, []);
+	}, [openComments]);
+
+	function openComments(postId) {
+		getData(`https://gorest.co.in/public/v1/comments?post_id=${postId}`, ACTIONS.SET_COMMENTS);
+		dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: true });
+	}
 
 	return (
 		<div className='flex flex-col items-center'>
@@ -41,7 +47,7 @@ const Posts = () => {
 				</TableHead>
 				<TableBody>
 					{state.postsData.map(post => (
-						<TableRow key={post.id}>
+						<TableRow onClickFn={() => openComments(post.id)} key={post.id}>
 							<TableData>{post.id}</TableData>
 							<TableData>{post.user_id}</TableData>
 							<TableData>{post.title}</TableData>
@@ -51,6 +57,7 @@ const Posts = () => {
 				</TableBody>
 			</Table>
 			<Pagination metaProps={state.postsMeta} actionType={ACTIONS.SET_POSTS} endpoint='posts' />
+			<InfoModal commentsData={state.commentsData} modalState={state.modalOpen} />
 		</div>
 	);
 };
