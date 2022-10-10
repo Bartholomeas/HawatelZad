@@ -23,6 +23,10 @@ module.exports = {
 				lg: '2.4rem',
 				xl: '3.2rem',
 			},
+			colors: {
+				font: '#13211F',
+				white: '#FFFFFF',
+			},
 		},
 	},
 	plugins: [],

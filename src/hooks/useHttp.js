@@ -3,14 +3,13 @@ import { useContext, useState } from 'react';
 import ReducerContext from '../state/useContext';
 
 const useHttp = () => {
-	const [data, setData] = useState([]);
 	const { state, dispatch } = useContext(ReducerContext);
 
 	async function getData(url, actionType) {
 		try {
 			const data = await axios(url);
-			if (data.data.meta) dispatch({ type: `${actionType}_META`, payload: data.data.data });
-			setData(data.data.data);
+			if (data.data.meta.pagination)
+				dispatch({ type: `${actionType}_META`, payload: data.data.meta.pagination });
 
 			dispatch({ type: actionType, payload: data.data.data });
 
@@ -20,7 +19,7 @@ const useHttp = () => {
 			throw new Error('Something went wrong');
 		}
 	}
-	return { getData, data };
+	return { getData };
 };
 
 export default useHttp;
