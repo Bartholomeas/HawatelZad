@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import useHttp from '../../../hooks/useHttp';
-import { ACTIONS } from '../../../state/actions';
 
-const Pagination = ({ metaProps, actionType }) => {
+const Pagination = ({ metaProps, actionType, endpoint }) => {
 	const { getData } = useHttp();
 	const [inputValue, setInputValue] = useState(0);
 
 	function getSpecifiedPage(pageNumber = 1) {
-		getData(`https://gorest.co.in/public/v1/users?page=${pageNumber}`, actionType);
+		getData(`https://gorest.co.in/public/v1/${endpoint}?page=${pageNumber}`, actionType);
 	}
-	console.log(metaProps);
 	return (
-		<div className='flex flex-col items-center justify-center w-full h-auto max-w-[400px] p-sm'>
-			<ul className=' flex items-end rounded-full justify-center gap-xl w-full text-xs py-xs bg-slate-200'>
+		<div className='flex flex-col items-center justify-center w-full h-auto max-w-[300px] p-sm'>
+			<ul className=' flex items-end rounded-full justify-around gap-xl w-full text-xs py-xs bg-slate-200'>
 				<li>
 					<button
 						onClick={() =>

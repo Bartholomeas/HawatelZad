@@ -44,7 +44,7 @@ const Users = () => {
 					))}
 				</TableBody>
 			</Table>
-			<Pagination metaProps={state.usersMeta} actionType={ACTIONS.SET_USERS} />
+			<Pagination metaProps={state.usersMeta} actionType={ACTIONS.SET_USERS} endpoint='users' />
 		</div>
 	);
 };

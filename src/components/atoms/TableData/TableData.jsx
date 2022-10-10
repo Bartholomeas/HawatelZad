@@ -3,7 +3,7 @@ import React from 'react';
 const TableData = ({ children }) => {
 	return (
 		<td
-			className={` px-xs text-sm text-font h-[6rem]
+			className={` px-xs py-sm text-sm leading-6 text-font h-[6rem]
 			first:pl-xs first last:pr-xs
 			md:table-cell
 			`}>

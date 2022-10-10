@@ -6,10 +6,13 @@ const initialState = {
 	usersData: [],
 
 	postsData: [],
-	postsData: [],
+	postsMeta: [],
 
 	todosData: [],
-	todosData: [],
+	todosMeta: [],
+
+	commentsData: [],
+	commentsMeta: [],
 };
 
 function appReducer(state, action) {
@@ -36,7 +39,15 @@ function appReducer(state, action) {
 
 		case ACTIONS.SET_TODOS_META:
 			if (!action.payload) return { todosMeta: [] };
-			return { ...state, todosData: action.payload };
+			return { ...state, todosMeta: action.payload };
+
+		case ACTIONS.SET_COMMENTS:
+			if (!action.payload) return { commentsData: [] };
+			return { ...state, commentsData: action.payload };
+
+		case ACTIONS.SET_COMMENTS_META:
+			if (!action.payload) return { commentsMeta: [] };
+			return { ...state, commentsMeta: action.payload };
 
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
