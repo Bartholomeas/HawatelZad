@@ -3,17 +3,16 @@ import { useContext, useState } from 'react';
 import ReducerContext from '../state/useContext';
 
 const useHttp = () => {
-	const [info, setInfo] = useState([]);
 	const [data, setData] = useState([]);
-	const { state, dispatch, ACTIONS } = useContext(ReducerContext);
+	const { state, dispatch } = useContext(ReducerContext);
 
-	async function getData(url, method = 'get') {
+	async function getData(url, actionType) {
 		try {
-			const data = method === 'get' ? await axios(url) : await axios.post(url);
-			if (data.data.meta) setInfo(data.data.meta);
+			const data = await axios(url);
+			if (data.data.meta) dispatch({ type: `${actionType}_META`, payload: data.data.data });
 			setData(data.data.data);
 
-			dispatch({ type: ACTIONS.SET_USERS, payload: data.data.data });
+			dispatch({ type: actionType, payload: data.data.data });
 
 			return data;
 		} catch (err) {
@@ -21,7 +20,7 @@ const useHttp = () => {
 			throw new Error('Something went wrong');
 		}
 	}
-	return { getData, data, info };
+	return { getData, data };
 };
 
 export default useHttp;

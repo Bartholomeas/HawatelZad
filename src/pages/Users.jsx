@@ -6,20 +6,14 @@ import TableRow from '../components/molecules/TableRow/TableRow';
 import TableHeader from '../components/atoms/TableHeader/TableHeader';
 import TableBody from '../components/molecules/TableBody/TableBody';
 import TableData from '../components/atoms/TableData/TableData';
-
-interface User {
-	id: number;
-	name: string;
-	email: string;
-	gender: string;
-	status: string;
-}
+import ReducerContext from '../state/useContext';
+import { ACTIONS } from '../state/actions';
 
 const Users = () => {
-	const { getData, data, info } = useHttp();
+	const { getData, data } = useHttp();
 
 	useEffect(() => {
-		getData('https://gorest.co.in/public/v1/users', 'get');
+		getData('https://gorest.co.in/public/v1/users', ACTIONS.SET_USERS);
 	}, []);
 
 	return (
@@ -34,7 +28,7 @@ const Users = () => {
 				</TableRow>
 			</TableHead>
 			<TableBody>
-				{data.map((user: User) => (
+				{data.map(user => (
 					<TableRow key={user.id}>
 						<TableData>{user.id}</TableData>
 						<TableData>{user.name}</TableData>
