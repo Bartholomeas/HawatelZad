@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TableRow = ({ children, onClickFn }) => {
+	//Komponent wyświetlający pojedynczy wiersz tabeli, który może być klikalny
 	return (
 		<tr
 			onClick={onClickFn}

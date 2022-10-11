@@ -4,6 +4,7 @@ import Navbar from '../components/organisms/Navbar/Navbar';
 import ContextProvider from './ContextProvider';
 
 const AppWrapper = ({ children }) => {
+	//Wrapper na całą aplikację mający za zadanie zapewnić dostęp do Contextu, Navbaru, routingu oraz szkieletu strony
 	return (
 		<BrowserRouter>
 			<ContextProvider>

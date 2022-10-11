@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Button = ({ children, onClickFn, lessContrast }) => {
+	//Standardowy przycisk, który przyjmuje tekst i funkcję do wykonania po kliknięciu, a także opcjonalnie mniej kontrastowy styl
 	return (
 		<button
 			onClick={() => onClickFn()}

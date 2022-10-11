@@ -21,13 +21,13 @@ const Navbar = () => {
 				</p>
 				<ul className=' flex justify-end items-center gap-sm w-full h-full bg-white px-xs'>
 					<li>
-						<NavbarLink route='/'>Users</NavbarLink>
+						<NavbarLink route='/HawatelZad/users'>Users</NavbarLink>
 					</li>
 					<li>
-						<NavbarLink route='/posts'>Posts</NavbarLink>
+						<NavbarLink route='/HawatelZad/posts'>Posts</NavbarLink>
 					</li>
 					<li>
-						<NavbarLink route='/todos'>Todos</NavbarLink>
+						<NavbarLink route='/HawatelZad/todos'>Todos</NavbarLink>
 					</li>
 					<li>
 						<Button onClickFn={() => openAddUserModal()}>+User</Button>

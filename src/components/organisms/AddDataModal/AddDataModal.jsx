@@ -6,30 +6,40 @@ import Button from '../../atoms/Button/Button';
 import Loading from '../../atoms/Loader/Loading';
 import InfoMessage from '../InfoMessage/InfoMessage';
 
+//Domyślny stan formularza
 const initialState = {
 	name: '',
 	email: '',
-	gender: '',
-	status: '',
+	gender: 'male',
+	status: 'active',
 };
 
 const AddDataModal = ({ commentsData, modalState }) => {
+	// Modal, który pozwala na dodawanie nowych użytkowników
+
+	//State oraz dispatch przekazane z customowego hooka useReducer za pomocą React Contextu, aby cała aplikacja posiadała tę samą instancję stanu
 	const { state, dispatch } = useContext(ReducerContext);
 	const [userData, setUserData] = useState(initialState);
 	const [error, setError] = useState(false);
+
+	//Referencje zaciągnięte z customowego hooka useHttp w celu obsługi zapytań oraz rzeczy z nimi związanych
 	const { postData, respondInfo, loader } = useHttp();
-	const genderRef = useRef('');
-	const statusRef = useRef('');
+
+	//Referencje do dwóch pól 'select'
+	const genderRef = useRef();
+	const statusRef = useRef();
 
 	function closeModal() {
 		dispatch({ type: ACTIONS.TOGGLE_ADD_USER, payload: false });
 	}
 
+	//funkcja obsługująca zmianę stanu formularza
 	function handleChange(e) {
 		const { name, value } = e;
 		setUserData({ ...userData, [name]: value });
 	}
 
+	//funkcja obsługująca wysłanie formularza i ewentualne wyświetlenie komunikatu o błędzie
 	function addUser() {
 		for (let key in userData) {
 			setError(false);
@@ -82,9 +92,7 @@ const AddDataModal = ({ commentsData, modalState }) => {
 							ref={genderRef}
 							name='gender'
 							className='p-xs rounded-xl'>
-							<option defaultValue value='male'>
-								male
-							</option>
+							<option value='male'>male</option>
 							<option value='female'>female</option>
 						</select>
 					</div>
@@ -95,9 +103,7 @@ const AddDataModal = ({ commentsData, modalState }) => {
 							ref={statusRef}
 							name='status'
 							className='p-xs rounded-xl'>
-							<option defaultValue value='active'>
-								active
-							</option>
+							<option value='active'>active</option>
 							<option value='inactive'>inactive</option>
 						</select>
 						{error && (
@@ -114,7 +120,9 @@ const AddDataModal = ({ commentsData, modalState }) => {
 					</div>
 				</form>
 			</div>
-			{!postData.message === '' && <InfoMessage infoProps={respondInfo} />}
+
+			{/* Komponent wyświetlający komunikat o sukcesie bądź błędzie */}
+			<InfoMessage infoProps={respondInfo} />
 			<Loading isActive={loader} />
 		</div>
 	);

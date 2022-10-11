@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
 import { ACTIONS } from './actions';
 
+// Serce aplikacji, hook zarządzający jej stanem i aktualizujący go. Tutaj przechowywane są wszystkie dane pobrane z api, a także stan komponentów, które nie są w stanie zarządzać swoim stanem samodzielnie.
+
 const initialState = {
 	usersMeta: [],
 	usersData: [],

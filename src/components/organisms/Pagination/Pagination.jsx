@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import useHttp from '../../../hooks/useHttp';
 
 const Pagination = ({ metaProps, actionType, endpoint }) => {
+	//Komponent paginacji, który wyświetla przyciski do nawigacji po stronach
+
 	const { getData } = useHttp();
 	const [inputValue, setInputValue] = useState(0);
 
+	//Pobranie danych z danej paginowanej strony z API
 	function getSpecifiedPage(pageNumber = 1) {
 		getData(`https://gorest.co.in/public/v1/${endpoint}?page=${pageNumber}`, actionType);
 	}
@@ -23,6 +26,7 @@ const Pagination = ({ metaProps, actionType, endpoint }) => {
 				<li>
 					<button onClick={() => getSpecifiedPage(1)}>1</button>
 				</li>
+				{/* Tutaj można przenieść się na konkretną stronę */}
 				<li>
 					<form className=' flex flex-col items-center' onSubmit={e => e.preventDefault()}>
 						<input

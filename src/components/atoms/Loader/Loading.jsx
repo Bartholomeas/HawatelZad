@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Loading = ({ isActive }) => {
+	//Komponent, który wyświetla loader, gdy dane są pobierane
 	return (
 		<div
 			className={`${

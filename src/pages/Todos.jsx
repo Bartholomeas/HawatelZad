@@ -15,6 +15,8 @@ const Todos = () => {
 	const { getData } = useHttp();
 	const { state } = useContext(ReducerContext);
 
+
+	//Ta sama zasada, co w Posts
 	useEffect(() => {
 		{
 			state.todosData.length === 0 &&

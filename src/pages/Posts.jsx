@@ -10,12 +10,15 @@ import ReducerContext from '../state/useContext';
 import { ACTIONS } from '../state/actions';
 import Pagination from '../components/organisms/Pagination/Pagination';
 import { convertDate } from '../utils/convertDate';
-import InfoModal from '../components/organisms/InfoModal/InfoModal';
+import CommentsModal from '../components/organisms/CommentsModal/CommentsModal';
 
 const Posts = () => {
+	//Komponent wyświetlający listę postów, z paginacją i możliwością wyświetlenia komentarzy do posta
+
 	const { getData } = useHttp();
 	const { state, dispatch } = useContext(ReducerContext);
 
+	//pobieraenie postów od razu po odświeżeniu komponentu
 	useEffect(() => {
 		{
 			state.postsData.length === 0 &&
@@ -23,6 +26,7 @@ const Posts = () => {
 		}
 	}, [openComments]);
 
+	//funkcja otwierająca modal z komentarzami do posta
 	function openComments(postId) {
 		getData(`https://gorest.co.in/public/v1/comments?post_id=${postId}`, ACTIONS.SET_COMMENTS);
 		dispatch({ type: ACTIONS.TOGGLE_COMMENTS, payload: true });
@@ -57,7 +61,7 @@ const Posts = () => {
 				</TableBody>
 			</Table>
 			<Pagination metaProps={state.postsMeta} actionType={ACTIONS.SET_POSTS} endpoint='posts' />
-			<InfoModal commentsData={state.commentsData} modalState={state.commentsOpen} />
+			<CommentsModal commentsData={state.commentsData} modalState={state.commentsOpen} />
 		</div>
 	);
 };
