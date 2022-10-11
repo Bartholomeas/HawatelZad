@@ -32,8 +32,8 @@ const InfoModal = ({ commentsData, modalState }) => {
 				</div>
 				<button
 					onClick={closeModal}
-					className='w-full p-xs text-sm rounded-full bg-rose-100
-				hover:bg-rose-200 '>
+					className='w-full p-xs text-sm rounded-full bg-blue-100
+				hover:bg-blue-200 '>
 					Close modal
 				</button>
 			</div>

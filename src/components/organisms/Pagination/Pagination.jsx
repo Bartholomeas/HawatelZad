@@ -20,15 +20,11 @@ const Pagination = ({ metaProps, actionType, endpoint }) => {
 						{'<'}
 					</button>
 				</li>
-
 				<li>
 					<button onClick={() => getSpecifiedPage(1)}>1</button>
 				</li>
-
 				<li>
-					<form
-						className='relative flex flex-col-reverse items-center'
-						onSubmit={e => e.preventDefault()}>
+					<form className=' flex flex-col items-center' onSubmit={e => e.preventDefault()}>
 						<input
 							className='bg-transparent border-2 border-b-0 border-slate-300 rounded-t-xl w-[5rem] text-center'
 							type='number'
@@ -39,7 +35,7 @@ const Pagination = ({ metaProps, actionType, endpoint }) => {
 							placeholder={`${metaProps.page}`}
 						/>
 						<button
-							className='absolute w-[5rem] border-slate-300 rounded-b-xl bottom-0 translate-y-full p-xs border-2 bg-slate-200 hover:bg-slate-300 transition-colors'
+							className=' w-[5rem] border-slate-300 rounded-b-xl bottom-0 p-[0.3rem] border-2 bg-slate-200 hover:bg-slate-300 transition-colors'
 							onClick={() => getSpecifiedPage(inputValue)}>
 							Go to
 						</button>
@@ -54,7 +50,7 @@ const Pagination = ({ metaProps, actionType, endpoint }) => {
 						className='nextPage font-bold text-sm'>
 						{'>'}
 					</button>
-				</li>
+				</li>{' '}
 			</ul>
 			<p className='totalPositions text-xs py-sm mt-[2rem]'>
 				All positions: <span className='font-bold'>{metaProps.total}</span>

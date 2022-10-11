@@ -1,21 +1,34 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Button from '../../atoms/Button/Button';
+import NavbarLink from '../../atoms/NavbarLink/NavbarLink';
+import AddDataModal from '../AddDataModal/AddDataModal';
 
 const Navbar = () => {
 	return (
-		<nav className=''>
-			<ul className='bg-sky-500 flex justify-end items-center gap-sm w-full'>
-				<li>
-					<NavLink to='/'>Users</NavLink>
-				</li>
-				<li>
-					<NavLink to='/posts'>Posts</NavLink>
-				</li>
-				<li>
-					<NavLink to='/todos'>Todos</NavLink>
-				</li>
-			</ul>
-		</nav>
+		<div>
+			<nav className='fixed flex items-center justify-between top-0 left-0 right-0 h-[5rem] bg-white border-b-blue-500 border-b-2 px-xs z-[10000]'>
+				<p>
+					<span className='font-bold text-blue-500'>Hawatel</span>
+					App
+				</p>
+				<ul className=' flex justify-end items-center gap-sm w-full h-full bg-white px-xs'>
+					<li>
+						<NavbarLink route='/'>Users</NavbarLink>
+					</li>
+					<li>
+						<NavbarLink route='/posts'>Posts</NavbarLink>
+					</li>
+					<li>
+						<NavbarLink route='/todos'>Todos</NavbarLink>
+					</li>
+					<li>
+						<Button>+User</Button>
+					</li>
+				</ul>
+			</nav>
+			<AddDataModal />
+		</div>
 	);
 };
 

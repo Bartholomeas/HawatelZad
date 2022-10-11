@@ -7,7 +7,7 @@ const AppWrapper = ({ children }) => {
 	return (
 		<BrowserRouter>
 			<ContextProvider>
-				<div className='flex flex-col items-center justify-center w-full max-w-[900px] h-full mx-auto'>
+				<div className='flex flex-col items-center justify-center w-full max-w-[900px] h-full mx-auto pt-[5rem]'>
 					<Navbar />
 					{children}
 				</div>

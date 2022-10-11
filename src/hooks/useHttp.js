@@ -18,7 +18,19 @@ const useHttp = () => {
 			throw new Error('Something went wrong');
 		}
 	}
-	return { getData };
+
+	async function postData(url, body) {
+		try {
+			const data = await axios.post(url, body);
+			console.log(data);
+			return;
+		} catch (err) {
+			console.log(err);
+			throw new Error('Something went wrong');
+		}
+	}
+
+	return { getData, postData };
 };
 
 export default useHttp;
