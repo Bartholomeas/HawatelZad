@@ -8,7 +8,7 @@ import UserBody from '../../atoms/UserBody/UserBody';
 const InfoModal = ({ commentsData, modalState }) => {
 	const { dispatch } = useContext(ReducerContext);
 	function closeModal() {
-		dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: false });
+		dispatch({ type: ACTIONS.TOGGLE_COMMENTS, payload: false });
 	}
 	return (
 		<div

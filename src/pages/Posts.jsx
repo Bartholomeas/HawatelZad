@@ -25,7 +25,7 @@ const Posts = () => {
 
 	function openComments(postId) {
 		getData(`https://gorest.co.in/public/v1/comments?post_id=${postId}`, ACTIONS.SET_COMMENTS);
-		dispatch({ type: ACTIONS.TOGGLE_MODAL, payload: true });
+		dispatch({ type: ACTIONS.TOGGLE_COMMENTS, payload: true });
 	}
 
 	return (
@@ -57,7 +57,7 @@ const Posts = () => {
 				</TableBody>
 			</Table>
 			<Pagination metaProps={state.postsMeta} actionType={ACTIONS.SET_POSTS} endpoint='posts' />
-			<InfoModal commentsData={state.commentsData} modalState={state.modalOpen} />
+			<InfoModal commentsData={state.commentsData} modalState={state.commentsOpen} />
 		</div>
 	);
 };
